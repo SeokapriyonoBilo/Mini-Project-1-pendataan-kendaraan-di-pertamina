@@ -1,0 +1,64 @@
+Nama : Seokapriyono Bilo
+NIM : 2309116095
+Kelas : B (23)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+class PertaminaData:
+    def __init__(self):
+        self.kendaraan_data = []
+
+    def Tambah_data(self, jenis_kendaraan, bahan_bakar, plat_nomor, tahun_pembuatan, kapasitas_tangki):
+        data = {
+            'jenis_kendaraan': jenis_kendaraan,
+            'bahan_bakar': bahan_bakar,
+            'plat_nomor': plat_nomor,
+            'tahun_pembuatan': tahun_pembuatan,
+            'kapasitas_tangki': kapasitas_tangki
+        }
+        self.kendaraan_data.append(data)
+        print(f"Data kendaraan {jenis_kendaraan} berhasil ditambahkan.")
+
+    def Lihat_data(self):
+        if not self.kendaraan_data:
+            print("Tidak ada data kendaraan.")
+        else:
+            print("Data Kendaraan:")
+            for i, data in enumerate(self.kendaraan_data, 1):
+                print(f"{i}. Jenis: {data['jenis_kendaraan']}, Plat Nomor: {data['plat_nomor']}, Bahan Bakar: {data['bahan_bakar']}")
+
+    def update_data(self, plat_nomor, new_bahan_bakar):
+        for data in self.kendaraan_data:
+            if data['plat_nomor'] == plat_nomor:
+                data['bahan_bakar'] = new_bahan_bakar
+                print(f"Data kendaraan dengan plat nomor {plat_nomor} berhasil diupdate.")
+                return
+        print(f"Tidak ada data kendaraan dengan plat nomor {plat_nomor}.")
+
+    def Hapus_data(self, plat_nomor):
+        for data in self.kendaraan_data:
+            if data['plat_nomor'] == plat_nomor:
+                self.kendaraan_data.remove(data)
+                print(f"Data kendaraan dengan plat nomor {plat_nomor} berhasil dihapus.")
+                return
+        print(f"Tidak ada data kendaraan dengan plat nomor {plat_nomor}.")
+
+# penggunaan program
+pertamina_program = PertaminaData()
+
+# Create data
+pertamina_program.Tambah_data("Mobil", "Pertalite", "B123CD", 2020, 50)
+pertamina_program.Tambah_data("Motor", "Premium", "X456YZ", 2019, 10)
+
+# Read data
+pertamina_program.Lihat_data()
+
+# Update data
+pertamina_program.update_data("B123CD", "Pertamax")
+
+# Delete data
+pertamina_program.Hapus_data("X456YZ")
+
+# Read data setelah operasi CRUD
+pertamina_program.Lihat_data()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
